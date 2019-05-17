@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>apple</title>
+</head>
+<body>
+<div id="say"></div>
+<script>
+    let Apple = function (weightApple) {
+        this.weightApple = 10;
+        this.getWeightApple = function () {
+            return this.weightApple;
+        }
+        this.decreaseWeightApple = function () {
+            if(this.weightApple>0){
+                this.weightApple--;
+            }
+        }
+        this.isEmpty = function () {
+            return (this.weightApple==0);
+        }
+    }
+    let Human = function () {
+        this.name = "";
+        this.gender = true;
+        this.weight = 0;
+        this.setName = function (string) {
+            this.name = string;
+        }
+        this.getName = function () {
+            return this.name;
+        }
+        this.isMale = function () {
+            return this.gender;
+        }
+        this.setGender = function (gender) {
+            this.gender = gender;
+        }
+        this.setWeight = function (int) {
+            this.weight = parseInt(int);
+        }
+        this.getWeight = function () {
+            return this.weight;
+        }
+        this.checkApple = function (apple) {
+            return apple.weightApple > 0;
+        }
+        this.eatApple = function (apple) {
+            this.weight++;
+            apple.decreaseWeightApple();
+        }
+        this.sayHuman = function (string) {
+             document.getElementById('say').innerHTML += this.name + ": "+ string + "<br>";
+        }
+    }
+    function script() {
+        let apple = new Apple();
+        let adam = new Human();
+        adam.setName("Adam");
+        adam.weight = 66;
+        adam.getName();
+        adam.isMale();
+        adam.setWeight(68);
+        adam.getWeight();
+        adam.checkApple(apple);
+        adam.sayHuman("Tao an 1 mieng tao");
+        let eva = new Human();
+        eva.setName("Eva");
+        eva.weight = 46;
+        eva.getName();
+        eva.isMale();
+        eva.setWeight(48);
+        eva.getWeight();
+        eva.checkApple(apple);
+        eva.sayHuman("Tao cung an 1 mieng tao");
+        while (!apple.isEmpty()){
+            adam.eatApple(apple);
+            eva.eatApple(apple);
+        }
+        apple.getWeightApple();
+    }
+    script();
+
+</script>
+</body>
+</html>
